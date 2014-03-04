@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  start_date: 2014-03-03
+  end_date: 2014-03-03
+  rent: 1
+  unit_id: 1
+
+two:
+  start_date: 2014-03-03
+  end_date: 2014-03-03
+  rent: 1
+  unit_id: 1
