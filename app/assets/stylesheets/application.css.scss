@@ -14,9 +14,9 @@
  *= require_tree .
  */
 @import "compass/layout/sticky-footer";
-@include sticky-footer(100px);
+@include sticky-footer(40px);
 
-#notice {
+.notice {
   color: green;
 }
 
@@ -47,4 +47,8 @@
     font-size: 12px;
     list-style: square;
   }
+}
+
+#main_window, #sidebar {
+  margin-bottom: 20px;
 }

@@ -3,7 +3,10 @@ source 'https://rubygems.org'
 gem 'authlogic'
 gem 'scrypt'
 gem 'foundation-rails'
+
+
 gem 'compass-rails'
+
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.2'

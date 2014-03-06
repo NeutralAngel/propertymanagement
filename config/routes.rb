@@ -1,4 +1,12 @@
 Propertymanagement::Application.routes.draw do
+  
+  root 'users#index'
+
+  get 'login', to: 'user_sessions#new'
+  get 'logout', to: 'user_sessions#destroy'
+
+  resources :user_sessions
+
   resources :repair_requests
 
   resources :properties
