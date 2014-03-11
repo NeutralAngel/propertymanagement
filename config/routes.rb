@@ -1,5 +1,7 @@
 Propertymanagement::Application.routes.draw do
   
+  resources :roles
+
   root 'users#index'
 
   get 'login', to: 'user_sessions#new'

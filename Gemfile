@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 gem 'authlogic'
 gem 'scrypt'
 gem 'foundation-rails'
+gem 'cancan'
 
 
 gem 'compass-rails'
