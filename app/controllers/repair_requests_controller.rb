@@ -4,7 +4,12 @@ class RepairRequestsController < ApplicationController
   # GET /repair_requests
   # GET /repair_requests.json
   def index
-    @repair_requests = RepairRequest.all
+    if current_user.has_role?(:manager)
+      @repair_requests = RepairRequest.all
+    else
+      @repair_requests = RepairRequest.where(submitter: current_user)
+    end
+    @repair_requests ||= []
   end
 
   # GET /repair_requests/1

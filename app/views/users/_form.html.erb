@@ -29,6 +29,14 @@
     <%= f.label :password_confirmation %><br>
     <%= f.password_field :password_confirmation %>
   </div>
+  <% if can? :assign_roles, User %>
+    <div>
+      <% Role.all.each do |role| %>
+        <%= check_box_tag "user[role_ids][]", role.id, @user.roles.include?(role) %>
+        <%= role.name %>
+      <% end %>
+    </div>
+  <% end %>
   <div class="actions">
     <%= f.submit %>
   </div>
