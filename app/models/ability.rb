@@ -2,18 +2,23 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
+    alias_action :create, :read, :update, :destroy, to: :crud
     user ||= User.new
     if user.has_role? :manager
-        can :manage, :all
+        can :crud, :all
         can :assign_roles, User
     elsif user.has_role? :renter
-        can :manage, user
+        can :crud, user
         can :index, :all
+        can :create, RepairRequest
+        can :crud, RepairRequest, submitter_id: user.id
     else
         can :index, User
     end
     can :create, :all
     can :destroy, UserSession
+    can :close_request, RepairRequest if user.has_role? :manager
+    can :open_request, RepairRequest if user.has_role? :renter
     
     # Define abilities for the passed in user here. For example:
     #

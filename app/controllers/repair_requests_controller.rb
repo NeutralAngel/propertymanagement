@@ -30,6 +30,7 @@ class RepairRequestsController < ApplicationController
   # POST /repair_requests.json
   def create
     @repair_request = RepairRequest.new(repair_request_params)
+    @repair_request.submitter = current_user
 
     respond_to do |format|
       if @repair_request.save
@@ -45,6 +46,7 @@ class RepairRequestsController < ApplicationController
   # PATCH/PUT /repair_requests/1
   # PATCH/PUT /repair_requests/1.json
   def update
+    @repair_request.responder = current_user if current_user.has_role?(:manager)
     respond_to do |format|
       if @repair_request.update(repair_request_params)
         format.html { redirect_to @repair_request, notice: 'Repair request was successfully updated.' }
@@ -74,6 +76,6 @@ class RepairRequestsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def repair_request_params
-      params.require(:repair_request).permit(:open_date, :close_date, :request_details, :request_response, :submitter_id, :responder_id)
+      params.require(:repair_request).permit(:open_date, :close_date, :request_details, :request_response)
     end
 end

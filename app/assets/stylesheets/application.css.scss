@@ -16,14 +16,19 @@
 @import "compass/layout/sticky-footer";
 @include sticky-footer(40px);
 
+.message {
+  font-size: 1.6em;
+  margin: 10px 0;
+}
+
 .notice {
+  @extend .message;
   color: green;
 }
 
 .error {
+  @extend .message;
   color: red;
-  font-size: 1.6em;
-  margin: 10px 0;
 }
 
 .field_with_errors {
