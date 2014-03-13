@@ -1,5 +1,6 @@
 class RepairRequestsController < ApplicationController
   before_action :set_repair_request, only: [:show, :edit, :update, :destroy]
+  helper_method :disable_close?, :disable_open?
 
   # GET /repair_requests
   # GET /repair_requests.json
@@ -77,5 +78,13 @@ class RepairRequestsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def repair_request_params
       params.require(:repair_request).permit(:open_date, :close_date, :request_details, :request_response)
+    end
+
+    def disable_close?
+      !can?(:close_request, RepairRequest) || @repair_request.new_record?
+    end
+
+    def disable_open?
+      !can?(:open_request, RepairRequest)
     end
 end
