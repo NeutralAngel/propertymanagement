@@ -36,6 +36,7 @@
         <%= role.name %>
       <% end %>
     </div>
+    <%= hidden_field_tag "user[role_ids][]" %>
   <% end %>
   <div class="actions">
     <%= f.submit %>
