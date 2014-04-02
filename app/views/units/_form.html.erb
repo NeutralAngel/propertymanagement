@@ -20,8 +20,8 @@
     <%= f.number_field :square_feet %>
   </div>
   <div class="field">
-    <%= f.label :property_id %><br>
-    <%= f.number_field :property_id %>
+    <%= f.label :property_id %><br />
+    <%= f.collection_select :property_id, Property.all, :id, :full_name, {include_blank: "Choose an Property"} %>
   </div>
   <div class="actions">
     <%= f.submit %>

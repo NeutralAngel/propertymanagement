@@ -17,7 +17,7 @@
       <tr>
         <td><%= unit.name %></td>
         <td><%= unit.square_feet %></td>
-        <td><%= unit.property_id %></td>
+        <td><%= unit.property.full_name %></td>
         <td><%= link_to 'Show', unit %></td>
         <td><%= link_to 'Edit', edit_unit_path(unit) %></td>
         <td><%= link_to 'Destroy', unit, method: :delete, data: { confirm: 'Are you sure?' } %></td>
